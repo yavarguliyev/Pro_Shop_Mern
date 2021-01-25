@@ -1,0 +1,31 @@
+{
+  "name": "proshop_mern",
+  "version": "1.0.0",
+  "description": "MERN shopping card app",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server_side/server",
+    "server": "nodemon server_side/server",
+    "client": "npm start --prefix client_side",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yavarguliyev/Pro_Shop_Mern.git"
+  },
+  "author": "Yavar Guliyev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yavarguliyev/Pro_Shop_Mern/issues"
+  },
+  "homepage": "https://github.com/yavarguliyev/Pro_Shop_Mern#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.7"
+  }
+}
