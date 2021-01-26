@@ -76,3 +76,7 @@ npm i react-router-dom react-router-bootstrap
 ```
   "type": "module" --- for making node.js to import dependencies
 ```
+
+```
+npm i redux react-redux redux-thunk redux-devtools-extension --- redux is a design patterns that we use in react or angular framework projects
+```
