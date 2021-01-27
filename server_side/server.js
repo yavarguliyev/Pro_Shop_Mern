@@ -20,6 +20,10 @@ app.use('/api/v1/products', product)
 app.use('/api/v1/users', user)
 app.use('/api/v1/orders', order)
 
+app.get('/api/config/paypal', (req, res) =>
+  res.send(process.env.PAYPAL_CLIENT_ID)
+)
+
 app.get('/', (req, res) => {
   res.send('API is running....')
 })

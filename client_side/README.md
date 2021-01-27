@@ -80,3 +80,9 @@ npm i react-router-dom react-router-bootstrap
 ```
 npm i redux react-redux redux-thunk redux-devtools-extension --- redux is a design patterns that we use in react or angular framework projects
 ```
+
+```
+https://developer.paypal.com/developer/applications
+
+https://www.npmjs.com/package/react-paypal-button-v2
+```
