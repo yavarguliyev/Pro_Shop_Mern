@@ -22,7 +22,7 @@ const CartScreen = ({ match, location, history }) => {
     dispatch(removeFromCart(id))
   }
 
-  const checkOutHandler = () => {
+  const checkoutHandler = () => {
     history.push('/login?redirect=shipping')
   }
 
@@ -96,7 +96,7 @@ const CartScreen = ({ match, location, history }) => {
                 type='button'
                 className='btn-block'
                 disabled={cartItems.length === 0}
-                onClick={() => checkOutHandler}
+                onClick={checkoutHandler}
               >
                 Proceed To Checkout
               </Button>
