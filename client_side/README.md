@@ -85,4 +85,6 @@ npm i redux react-redux redux-thunk redux-devtools-extension --- redux is a desi
 https://developer.paypal.com/developer/applications
 
 https://www.npmjs.com/package/react-paypal-button-v2
+
+https://www.paypal.com/businessmanage/preferences/website --- make sure here "Encrypted website payments" is off
 ```
