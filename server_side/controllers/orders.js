@@ -54,7 +54,7 @@ const getOrderById = asyncHadnler(async (req, res) => {
 })
 
 // @desc    Update order by to paid
-// @route   PUT /api/v1/ordeers/:id/pay
+// @route   PUT /api/v1/orders/:id/pay
 // @access  Private
 const updateOrderToPay = asyncHadnler(async (req, res) => {
   const order = await Order.findById(req.params.id).populate(
@@ -80,6 +80,27 @@ const updateOrderToPay = asyncHadnler(async (req, res) => {
   }
 })
 
+// @desc    Update order by to delivered
+// @route   PUT /api/v1/orders/:id/deliver
+// @access  Private/Admin
+const updateOrderToDelivered = asyncHadnler(async (req, res) => {
+  const order = await Order.findById(req.params.id).populate(
+    'user',
+    'name email'
+  )
+
+  if (order) {
+    order.isDelivered = true
+    order.deliveredAt = Date.now()
+
+    const updatedOrder = await order.save()
+    res.json(updatedOrder)
+  } else {
+    res.status(404)
+    throw new Error('Order not found')
+  }
+})
+
 // @desc    Get logged in user orders
 // @route   PUT /api/v1/ordeers/myorders
 // @access  Private
@@ -88,4 +109,19 @@ const getMyOrders = asyncHadnler(async (req, res) => {
   res.json(orders)
 })
 
-export { addOrderItems, getOrderById, updateOrderToPay, getMyOrders }
+// @desc    Get all orders
+// @route   GET /api/v1/orders
+// @access  Private
+const getOrders = asyncHadnler(async (req, res) => {
+  const orders = await Order.find({}).populate('user', 'id name')
+  res.json(orders)
+})
+
+export {
+  addOrderItems,
+  getOrderById,
+  updateOrderToPay,
+  getMyOrders,
+  getOrders,
+  updateOrderToDelivered,
+}

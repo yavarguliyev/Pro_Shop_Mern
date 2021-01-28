@@ -88,3 +88,7 @@ https://www.npmjs.com/package/react-paypal-button-v2
 
 https://www.paypal.com/businessmanage/preferences/website --- make sure here "Encrypted website payments" is off
 ```
+
+```
+npm i multer --- file uplad documentation for server
+```
