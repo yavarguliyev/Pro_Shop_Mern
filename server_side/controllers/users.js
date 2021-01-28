@@ -101,4 +101,75 @@ const updateUserProfile = asyncHadnler(async (req, res) => {
   }
 })
 
-export { authUser, registerUser, getUserProfile, updateUserProfile }
+// @desc    Get all users
+// @route   GET /api/v1/users
+// @access  Private/Admin
+const getUsers = asyncHadnler(async (req, res) => {
+  const users = await User.find({})
+  res.json(users)
+})
+
+// @desc    Delete user
+// @route   DELETE /api/v1/users/:id
+// @access  Private/Admin
+const deleteUser = asyncHadnler(async (req, res) => {
+  const user = await User.findById(req.params.id)
+  if (user) {
+    await user.remove()
+    res.json({
+      message: 'User removed',
+    })
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
+
+// @desc    Get user by ID
+// @route   GET /api/v1/users/:id
+// @access  Private/Admin
+const getUserById = asyncHadnler(async (req, res) => {
+  const user = await User.findById(req.params.id).select('-password')
+  if (user) {
+    res.json(user)
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
+
+// @desc    Update user
+// @route   PUT /api/v1/users/:id
+// @access  Privat/Admin
+const updateUser = asyncHadnler(async (req, res) => {
+  const user = await User.findById(req.params.id)
+
+  if (user) {
+    user.name = req.body.name || user.name
+    user.email = req.body.email || user.email
+    user.isAdmin = req.body.isAdmin
+
+    const updatedUser = await user.save()
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+    })
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
+
+export {
+  authUser,
+  registerUser,
+  getUserProfile,
+  updateUserProfile,
+  getUsers,
+  deleteUser,
+  getUserById,
+  updateUser,
+}
