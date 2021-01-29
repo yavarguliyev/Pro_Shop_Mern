@@ -10,7 +10,8 @@
     "client": "npm start --prefix client_side",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node server_side/seeder",
-    "data:destroy": "node server_side/seeder -d"
+    "data:destroy": "node server_side/seeder -d",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client_side && npm run build --prefix client_side"
   },
   "repository": {
     "type": "git",

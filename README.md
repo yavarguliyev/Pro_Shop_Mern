@@ -94,3 +94,18 @@ The MIT License
 Copyright (c) 2020 Yavar Guliyev
 
 [README cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+## Publish The Project in Heroku via Terminal
+
+```
+heroku login
+heroku create ...
+
+after create Procfile in the route file and add this text to there:
+
+- web: node client_side/server.js
+
+- after configure this line to the package.json --- "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client_side && npm run build --prefix client_side"
+
+- after push repo to git
+```

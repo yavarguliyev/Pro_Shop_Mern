@@ -100,3 +100,7 @@ https://github.com/nfl/react-helmet --- title configuration
 ```
 [Error: listen EADDRINUSE: address already in use :::5000] --- if you ever see this kind of error just make sure you are in main folder and start to take this error and click ctrl+c after type "sudo killall -9 node"
 ```
+
+```
+before production make sure you seet up 'npm run build' --- at the client side
+```
