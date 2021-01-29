@@ -74,7 +74,7 @@ npm i react-router-dom react-router-bootstrap
 ```
 
 ```
-  "type": "module" --- for making node.js to import dependencies
+"type": "module" --- for making node.js to import dependencies
 ```
 
 ```
@@ -95,4 +95,8 @@ npm i multer --- file uplad documentation for server
 
 ```
 https://github.com/nfl/react-helmet --- title configuration
+```
+
+```
+[Error: listen EADDRINUSE: address already in use :::5000] --- if you ever see this kind of error just make sure you are in main folder and start to take this error and click ctrl+c after type "sudo killall -9 node"
 ```

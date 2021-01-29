@@ -6,6 +6,7 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/users'
 import { listMyOrders } from '../actions/orders'
+import { USER_UPDATE_PROFILE_RESET } from '../constants/users'
 import { Table } from 'react-bootstrap'
 
 const ProfileScreen = ({ location, history }) => {
@@ -33,7 +34,8 @@ const ProfileScreen = ({ location, history }) => {
     if (!userInfo) {
       history.push('/login')
     } else {
-      if (!user.name) {
+      if (!user || !user.name || success) {
+        dispatch({ type: USER_UPDATE_PROFILE_RESET })
         dispatch(listMyOrders())
         dispatch(getUserDetails('profile'))
       } else {
@@ -41,7 +43,7 @@ const ProfileScreen = ({ location, history }) => {
         setEmail(user.email)
       }
     }
-  }, [dispatch, history, userInfo, user])
+  }, [dispatch, history, userInfo, user, success])
 
   const submitHandler = (ev) => {
     ev.preventDefault()
