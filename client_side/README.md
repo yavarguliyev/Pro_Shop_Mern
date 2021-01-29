@@ -92,3 +92,7 @@ https://www.paypal.com/businessmanage/preferences/website --- make sure here "En
 ```
 npm i multer --- file uplad documentation for server
 ```
+
+```
+https://github.com/nfl/react-helmet --- title configuration
+```
