@@ -108,4 +108,8 @@ after create Procfile in the route file and add this text to there:
 - after configure this line to the package.json --- "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client_side && npm run build --prefix client_side"
 
 - after push repo to git
+
+- after add this command to terminal --- 'heroku git:remote -a firstapppro'
+
+- after push repo like this --- git push heroku master
 ```
