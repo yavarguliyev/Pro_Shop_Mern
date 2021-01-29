@@ -111,5 +111,13 @@ after create Procfile in the route file and add this text to there:
 
 - after add this command to terminal --- 'heroku git:remote -a firstapppro'
 
-- after push repo like this --- git push heroku master
+- after push repo like this --- git push heroku main
+
+- heroku logs - check for the errors
+
+- go to the settings in heroku --- 'Config Vars':
+
+--- key - NODE_ENV  --- value - production
+--- key - PORT  --- value - 5000
+and rest check out from .env file
 ```
