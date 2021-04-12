@@ -8,6 +8,8 @@ import connectDB from './config/db.js'
 
 import helmet from 'helmet';
 import xss from 'xss-clean';
+import hpp from 'hpp';
+import cors from 'cors';
 
 import product from './routes/product.js'
 import user from './routes/user.js'
@@ -29,6 +31,10 @@ app.use(express.json())
 app.use(helmet())
 
 app.use(xss())
+
+app.use(hpp());
+
+app.use(cors());
 
 app.use('/api/v1/products', product)
 app.use('/api/v1/users', user)
