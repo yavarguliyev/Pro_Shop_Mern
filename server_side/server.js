@@ -31,15 +31,10 @@ app.use(express.json())
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", 'sha256-B3MPZ7fxjq80aegu65aic5wxFr1yyoaon4GbVVFTt/U= unsafe-inline'],
+      scriptSrc: ["'self'", 'sha256-B3MPZ7fxjq80aegu65aic5wxFr1yyoaon4GbVVFTt/U='],
+      imgSrc: ["'self'", 'http://www.w3.org/2000/svg'],
+      fontSrc: ["'self'", 'https://fonts.gstatic.com', 'https://cdnjs.cloudflare.com/'],
       styleSrc: ["'self'", 'https://fonts.googleapis.com'],
-      imgSrc: ["'self'"],
-      connectSrc: ["'self'"],
-      fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-      objectSrc: ["'self'"],
-      mediaSrc: ["'self'"],
-      frameSrc: ["'self'"]
     },
     reportOnly: true
   }
