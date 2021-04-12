@@ -80,7 +80,7 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "script-src": ["'self'", "'unsafe-inline'", "example.com"],
+        "script-src": ["'self'", "'unsafe-inline'", "https://www.paypal.com"],
       },
     },
   })
