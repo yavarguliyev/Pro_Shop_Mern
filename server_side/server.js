@@ -32,11 +32,11 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", 'sha256-B3MPZ7fxjq80aegu65aic5wxFr1yyoaon4GbVVFTt/U=', 'unsafe-inline'],
-      styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
+      scriptSrc: ["'self'", 'sha256-B3MPZ7fxjq80aegu65aic5wxFr1yyoaon4GbVVFTt/U= unsafe-inline'],
+      styleSrc: ["'self'", 'https://fonts.googleapis.com'],
       imgSrc: ["'self'"],
       connectSrc: ["'self'"],
-      fontSrc: ["'self'"],
+      fontSrc: ["'self'", 'https://fonts.gstatic.com'],
       objectSrc: ["'self'"],
       mediaSrc: ["'self'"],
       frameSrc: ["'self'"]
