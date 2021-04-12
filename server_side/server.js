@@ -28,7 +28,22 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json())
 
-app.use(helmet())
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", 'sha256-B3MPZ7fxjq80aegu65aic5wxFr1yyoaon4GbVVFTt/U=', 'unsafe-inline'],
+      styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
+      imgSrc: ["'self'"],
+      connectSrc: ["'self'"],
+      fontSrc: ["'self'"],
+      objectSrc: ["'self'"],
+      mediaSrc: ["'self'"],
+      frameSrc: ["'self'"]
+    },
+    reportOnly: true
+  }
+}))
 
 app.use(xss())
 
