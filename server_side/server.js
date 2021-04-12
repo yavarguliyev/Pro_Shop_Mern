@@ -32,31 +32,39 @@ app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
-        scriptSrc: ["'self'"],
-        imgSrc: [
-          "'self'",
-          'http://www.w3.org/2000',
-          'data:image/svg+xml;charset=utf-8,%3Csvg',
-          'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css',
-        ],
-        fontSrc: [
-          "'self'",
-          'https://fonts.gstatic.com',
-          'https://cdnjs.cloudflare.com/',
-          'https://www.paypal.com',
-        ],
-        styleSrc: ["'self'", 'https://fonts.googleapis.com'],
-        defaultSrc: ["'self'"],
-        connectSrc: ["'self'", 'https://www.paypal.com'],
+        defaultSrc: trusted,
+        scriptSrc: [
+          "'unsafe-eval'",
+          "'unsafe-inline'",
+          `nonce-${nonce}`,
+          'https://www.googletagmanager.com',
+          '*.googletagmanager.com',
+        ].concat(trusted),
+        styleSrc: [
+          "'unsafe-inline'",
+          '*.gstatic.com',
+          '*.googleapis.com',
+          'https://*.typography.com',
+        ].concat(trusted),
         frameSrc: [
-          "'self'",
-          'https://www.paypal.com',
-          'https://www.sandbox.paypal.com/',
-        ],
-        childSrc: ["'self'", 'https://www.paypal.com'],
-        baseUri: ["'self'"],
+          '*.stripe.com',
+          '*.paypal.com',
+        ].concat(trusted),
+        fontSrc: [
+          '*.cloudflare.com',
+          'https://*.cloudflare.com',
+          '*.bootstrapcdn.com',
+          '*.googleapis.com',
+          '*.gstatic.com',
+          'data',
+        ].concat(trusted),
+        imgSrc: [
+          'www.googletagmanager.com',
+        ].concat(trusted),
       },
-      reportOnly: true,
+      reportOnly: false,
+      setAllHeaders: false,
+      safari5: false
     },
   })
 )
