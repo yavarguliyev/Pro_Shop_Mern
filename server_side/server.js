@@ -35,6 +35,11 @@ app.use(helmet({
       imgSrc: ["'self'", 'http://www.w3.org/2000/svg'],
       fontSrc: ["'self'", 'https://fonts.gstatic.com', 'https://cdnjs.cloudflare.com/'],
       styleSrc: ["'self'", 'https://fonts.googleapis.com'],
+      defaultSrc: ["'self'"],
+      connectSrc: ["'self'"],
+      frameSrc: ["'self'"],
+      childSrc: ["'self'"],
+      baseUri: ["'self'"],
     },
     reportOnly: true
   }
