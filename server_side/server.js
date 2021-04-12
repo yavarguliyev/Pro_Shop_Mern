@@ -6,10 +6,10 @@ import morgan from 'morgan'
 import { notFound, errorHandler } from './middleware/errorHandler.js'
 import connectDB from './config/db.js'
 
-import helmet from 'helmet';
-import xss from 'xss-clean';
-import hpp from 'hpp';
-import cors from 'cors';
+import helmet from 'helmet'
+import xss from 'xss-clean'
+import hpp from 'hpp'
+import cors from 'cors'
 
 import product from './routes/product.js'
 import user from './routes/user.js'
@@ -28,28 +28,44 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json())
 
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      scriptSrc: ["'self'", 'https://www.paypal.com'],
-      imgSrc: ["'self'", 'http://www.w3.org/2000/svg'],
-      fontSrc: ["'self'", 'https://fonts.gstatic.com', 'https://cdnjs.cloudflare.com/', 'https://www.paypal.com'],
-      styleSrc: ["'self'", 'https://fonts.googleapis.com'],
-      defaultSrc: ["'self'"],
-      connectSrc: ["'self'", 'https://www.paypal.com'],
-      frameSrc: ["'self'", 'https://www.paypal.com'],
-      childSrc: ["'self'", 'https://www.paypal.com'],
-      baseUri: ["'self'"],
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        scriptSrc: ["'self'"],
+        imgSrc: [
+          "'self'",
+          'http://www.w3.org/2000',
+          'data:image/svg+xml;charset=utf-8,%3Csvg',
+          'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css',
+        ],
+        fontSrc: [
+          "'self'",
+          'https://fonts.gstatic.com',
+          'https://cdnjs.cloudflare.com/',
+          'https://www.paypal.com',
+        ],
+        styleSrc: ["'self'", 'https://fonts.googleapis.com'],
+        defaultSrc: ["'self'"],
+        connectSrc: ["'self'", 'https://www.paypal.com'],
+        frameSrc: [
+          "'self'",
+          'https://www.paypal.com',
+          'https://www.sandbox.paypal.com/',
+        ],
+        childSrc: ["'self'", 'https://www.paypal.com'],
+        baseUri: ["'self'"],
+      },
+      reportOnly: true,
     },
-    reportOnly: true
-  }
-}))
+  })
+)
 
 app.use(xss())
 
-app.use(hpp());
+app.use(hpp())
 
-app.use(cors());
+app.use(cors())
 
 app.use('/api/v1/products', product)
 app.use('/api/v1/users', user)
