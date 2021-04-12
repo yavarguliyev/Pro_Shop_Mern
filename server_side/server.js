@@ -6,6 +6,9 @@ import morgan from 'morgan'
 import { notFound, errorHandler } from './middleware/errorHandler.js'
 import connectDB from './config/db.js'
 
+import helmet from 'helmet';
+import xss from 'xss-clean';
+
 import product from './routes/product.js'
 import user from './routes/user.js'
 import order from './routes/order.js'
@@ -22,6 +25,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(express.json())
+
+app.use(helmet())
+
+app.use(xss())
 
 app.use('/api/v1/products', product)
 app.use('/api/v1/users', user)
