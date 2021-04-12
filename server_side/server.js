@@ -31,14 +31,14 @@ app.use(express.json())
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
-      scriptSrc: ["'self'", 'sha256-B3MPZ7fxjq80aegu65aic5wxFr1yyoaon4GbVVFTt/U='],
+      scriptSrc: ["'self'", 'https://www.paypal.com'],
       imgSrc: ["'self'", 'http://www.w3.org/2000/svg'],
-      fontSrc: ["'self'", 'https://fonts.gstatic.com', 'https://cdnjs.cloudflare.com/'],
+      fontSrc: ["'self'", 'https://fonts.gstatic.com', 'https://cdnjs.cloudflare.com/', 'https://www.paypal.com'],
       styleSrc: ["'self'", 'https://fonts.googleapis.com'],
       defaultSrc: ["'self'"],
-      connectSrc: ["'self'"],
-      frameSrc: ["'self'"],
-      childSrc: ["'self'"],
+      connectSrc: ["'self'", 'https://www.paypal.com'],
+      frameSrc: ["'self'", 'https://www.paypal.com'],
+      childSrc: ["'self'", 'https://www.paypal.com'],
       baseUri: ["'self'"],
     },
     reportOnly: true
