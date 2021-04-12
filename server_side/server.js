@@ -75,14 +75,21 @@ export default function contentSecurityPolicy(nonce) {
   });
 };
 
-app.use(helmet());
-app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
-app.use(contentSecurityPolicy(nonce));
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "script-src": ["'self'", "'unsafe-inline'", "example.com"],
+      },
+    },
+  })
+);
+// app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+// app.use(contentSecurityPolicy(nonce));
 
 app.use(xss())
-
 app.use(hpp())
-
 app.use(cors())
 
 app.use('/api/v1/products', product)
