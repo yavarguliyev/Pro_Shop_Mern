@@ -58,7 +58,11 @@ app.use(
 
 app.use(xss())
 app.use(hpp())
-app.use(cors())
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+}
+app.use(cors(corsOptions))
 
 app.use('/api/v1/products', product)
 app.use('/api/v1/users', user)
