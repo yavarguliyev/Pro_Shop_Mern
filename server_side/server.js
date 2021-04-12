@@ -6,8 +6,6 @@ import morgan from 'morgan'
 import { notFound, errorHandler } from './middleware/errorHandler.js'
 import connectDB from './config/db.js'
 
-import crypto from 'crypto';
-
 import helmet from 'helmet'
 import xss from 'xss-clean'
 import hpp from 'hpp'
@@ -30,63 +28,16 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json())
 
-const trusted = [
-  "'self'",
-];
-
-const nonce = crypto.randomBytes(16).toString('hex');
-
-export default function contentSecurityPolicy(nonce) {
-  return helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: trusted,
-      scriptSrc: [
-        "'unsafe-eval'",
-        "'unsafe-inline'",
-        `nonce-${nonce}`,
-        'https://www.googletagmanager.com',
-        '*.googletagmanager.com',
-      ].concat(trusted),
-      styleSrc: [
-        "'unsafe-inline'",
-        '*.gstatic.com',
-        '*.googleapis.com',
-        'https://*.typography.com',
-      ].concat(trusted),
-      frameSrc: [
-        '*.stripe.com',
-        '*.paypal.com',
-      ].concat(trusted),
-      fontSrc: [
-        '*.cloudflare.com',
-        'https://*.cloudflare.com',
-        '*.bootstrapcdn.com',
-        '*.googleapis.com',
-        '*.gstatic.com',
-        'data',
-      ].concat(trusted),
-      imgSrc: [
-        'www.googletagmanager.com',
-      ].concat(trusted),
-    },
-    reportOnly: false,
-    setAllHeaders: false,
-    safari5: false
-  });
-};
-
 app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "script-src": ["'self'", "'unsafe-inline'", "https://www.paypal.com"],
+        "script-src": ["'self'", "'unsafe-inline'", "https://www.paypal.com", "https://www.sandbox.paypal.com"],
       },
     },
   })
 );
-// app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
-// app.use(contentSecurityPolicy(nonce));
 
 app.use(xss())
 app.use(hpp())
