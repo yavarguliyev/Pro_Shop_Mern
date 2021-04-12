@@ -33,11 +33,28 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "script-src": ["'self'", "'unsafe-inline'", "https://www.paypal.com", "https://www.sandbox.paypal.com"],
+        'script-src': [
+          "'self'",
+          "'unsafe-inline'",
+          'https://www.paypal.com',
+          'https://www.sandbox.paypal.com',
+        ],
+        'connect-src': [
+          "'self'",
+          'https://www.sandbox.paypal.com',
+        ],
+        'default-src': [
+          "'self'",
+          'https://www.sandbox.paypal.com',
+        ],
+        'frame-src': [
+          "'self'",
+          'https://www.sandbox.paypal.com',
+        ],
       },
     },
   })
-);
+)
 
 app.use(xss())
 app.use(hpp())
