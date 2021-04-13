@@ -56,8 +56,8 @@ app.use(
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
         'script-src': [
           "'self'",
-          'https://www.paypal.com',
-          'https://www.sandbox.paypal.com',
+          "'https://www.paypal.com'",
+          "'https://www.sandbox.paypal.com'",
         ],
         'connect-src': ["'self'", 'https://www.sandbox.paypal.com'],
         'default-src': ["'self'", 'https://www.sandbox.paypal.com'],
