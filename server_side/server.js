@@ -58,6 +58,7 @@ app.use(
           "'self'",
           "'https://www.paypal.com'",
           "'https://www.sandbox.paypal.com'",
+          "'sha256-B3MPZ7fxjq80aegu65aic5wxFr1yyoaon4GbVVFTt/U='",
         ],
         'connect-src': ["'self'", 'https://www.sandbox.paypal.com'],
         'default-src': ["'self'", 'https://www.sandbox.paypal.com'],
