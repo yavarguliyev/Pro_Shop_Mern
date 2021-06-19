@@ -97,7 +97,7 @@ Copyright (c) 2020 Yavar Guliyev
 
 ## Publish The Project in Heroku via Terminal
 
-```
+```javascript
 heroku login
 heroku create ...
 
