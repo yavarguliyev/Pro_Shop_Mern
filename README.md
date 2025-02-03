@@ -1,123 +1,192 @@
 # ProShop eCommerce Platform
 
-> eCommerce platform built with the MERN stack & Redux.
+## 📖 Table of Contents
 
-This is the course project for my [MERN eCommerce From Scratch](https://github.com/yavarguliyev/Pro_Shop_Mern) course
+1. Features
+2. Technologies Used
+3. Getting Started
+4. Environment Variables
+5. Installation & Setup
+6. Running the Application
+7. Seeding the Database
+8. Sample User Credentials
+9. Deployment (Heroku)
+10. API Documentation
+11. License
 
-# Features
+---
 
-- Full featured shopping cart
+## ✨ Features
+
+- Full-featured shopping cart
 - Product reviews and ratings
 - Top products carousel
 - Product pagination
 - Product search feature
-- User profile with orders
-- Admin product management
-- Admin user management
-- Admin Order details page
-- Mark orders as delivered option
-- Checkout process (shipping, payment method, etc)
-- PayPal / credit card integration
-- Database seeder (products & users)
+- User profile with order history
+- Admin dashboard for product and user management
+- Order tracking with delivery status updates
+- Secure checkout process with shipping and payment method selection
+- PayPal and credit card payment integration
+- Database seeding with sample users and products
 
-# Usage
+---
 
-## ES Modules in Node
+## 🛠 Technologies Used
 
-We us ECMAScript Modules in the backend in this project. Be sure to have at least Node v14.6+ or you will need to add the "--experimental-modules" flag.
+- **Frontend**: React, Redux, Bootstrap
+- **Backend**: Node.js, Express.js, MongoDB (Mongoose ORM)
+- **Authentication**: JWT (JSON Web Token)
+- **Payment Gateway**: PayPal API
+- **Environment Management**: dotenv
+- **Database**: MongoDB Atlas / Local MongoDB
+- **State Management**: Redux Toolkit
+- **Deployment**: Heroku
 
-Also, when importing a file (not a package), be sure to add .js at the end or you will get a "module not found" error
+---
 
-You can also install and setup Babel if you would like
+## 🚀 Getting Started
 
-## Env Variables
-
-Create a .env file in then root and add the following
-
-```javascript
-NODE_ENV = development
-PORT = 5000
-MONGO_URI = your mongodb uri
-JWT_SECRET = 'abc123'
-PAYPAL_CLIENT_ID = your paypal client id
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yavarguliyev/Pro_Shop_Mern.git
+cd Pro_Shop_Mern
 ```
 
-## Install Dependencies (client_side & server_side)
+### 2. Environment Variables
 
-```javascript
-npm install
-cd frontend
-npm install
+Create a `.env` file in the root directory and add the following:
+
+```bash
+NODE_ENV=development
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+PAYPAL_CLIENT_ID=your_paypal_client_id
 ```
 
-## Run
+---
 
-```javascript
-# Run client_side (:3000) & server_side (:5000)
-npm run dev
+## 📦 Installation & Setup
 
-# Run backend only
+### Install Dependencies
+
+#### Install server and client dependencies:
+```bash
+npm install  # Install server-side dependencies
+cd frontend && npm install  # Install client-side dependencies
+```
+
+---
+
+## ▶️ Running the Application
+
+### Start the Development Server
+```bash
+npm run dev  # Runs frontend (:3000) and backend (:5000) concurrently
+```
+
+### Run Backend Only
+```bash
 npm run server
 ```
 
-## Seed Database
+---
 
-You can use the following commands to seed the database with some sample users and products as well as destroy all data
+## 🗄️ Seeding the Database
 
-```javascript
-# Import data
+To populate the database with sample users and products or to clear existing data, use the following commands:
+
+```bash
+# Import sample data
 npm run data:import
 
-# Destroy data
+# Destroy existing data
 npm run data:destroy
 ```
 
-```javascript
-Sample User Logins
+---
 
-admin@example.com (Admin)
-123456
+## 🔑 Sample User Credentials
 
-john@example.com (Customer)
-123456
+Use the following credentials for testing:
 
-jane@example.com (Customer)
-123456
+```plaintext
+Admin User:
+Email: admin@example.com
+Password: 123456
+
+Regular User:
+Email: john@example.com
+Password: 123456
+
+Email: jane@example.com
+Password: 123456
 ```
 
-You can also check out the [api documentation](https://documenter.getpostman.com/view/11043766/TW6xo823)
+---
 
-# License
+## ☁️ Deployment (Heroku)
 
-The MIT License
-
-Copyright (c) 2020 Yavar Guliyev
-
-[README cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-
-## Publish The Project in Heroku via Terminal
-
-```javascript
+### 1. Login to Heroku
+```bash
 heroku login
-heroku create ...
-
-after create Procfile in the route file and add this text to there:
-
-- web: node server_side/server.js
-
-- after configure this line to the package.json --- "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client_side && npm run build --prefix client_side"
-
-- after push repo to git
-
-- after add this command to terminal --- 'heroku git:remote -a firstapppro'
-
-- after push repo like this --- git push heroku main
-
-- heroku logs - check for the errors
-
-- go to the settings in heroku --- 'Config Vars':
-
---- key - NODE_ENV  --- value - production
---- key - PORT  --- value - 5000
-and rest check out from .env file
 ```
+
+### 2. Create a New Heroku App
+```bash
+heroku create your-app-name
+```
+
+### 3. Add a `Procfile`
+Create a `Procfile` in the root directory and add:
+```bash
+web: node server.js
+```
+
+### 4. Update `package.json`
+Add the following line under `scripts`:
+```json
+"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+```
+
+### 5. Push the Code to Heroku
+```bash
+git add .
+git commit -m "Deploy to Heroku"
+git push heroku main
+```
+
+### 6. Configure Environment Variables in Heroku
+```bash
+heroku config:set NODE_ENV=production
+heroku config:set PORT=5000
+heroku config:set MONGO_URI=your_mongodb_uri
+heroku config:set JWT_SECRET=your_jwt_secret
+heroku config:set PAYPAL_CLIENT_ID=your_paypal_client_id
+```
+
+### 7. Check Heroku Logs for Errors
+```bash
+heroku logs --tail
+```
+
+---
+
+## 📜 API Documentation
+
+You can check the API documentation [here](https://documenter.getpostman.com/view/11043766/TW6xo823).
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+&copy; 2020 Yavar Guliyev
+
+---
+
+### 📌 Additional Resources
+
+- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
