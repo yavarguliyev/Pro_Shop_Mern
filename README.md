@@ -184,9 +184,3 @@ You can check the API documentation [here](https://documenter.getpostman.com/vie
 This project is licensed under the MIT License.
 
 &copy; 2020 Yavar Guliyev
-
----
-
-### 📌 Additional Resources
-
-- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
